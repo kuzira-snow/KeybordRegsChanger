@@ -35,13 +35,21 @@ namespace KeybordRegsChanger
 
             if (IsAdministrator())
             {
-                label1.Visible = false;
+                button1.Visible = false;
+                txtMsg.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+                this.txtMsg.ForeColor = System.Drawing.Color.Black;
+                txtMsg.BackColor = Color.White;
+                txtMsg.Text = "キーボードの日本語(106)/英語(101)を再起動しないで切替が可能なように" + Environment.NewLine
+                            + "各キーボードのレジストリへ設定をすることでスムーズな切替を可能。";
             }
             else
             {
-                label1.Text = "レジストリへの書き込みは管理者権限が必要です。" + Environment.NewLine
-                              + "管理者権限で実行する場合はここをクリックして下さい。";
-                label1.Visible = true;
+                button1.Visible = true;
+                txtMsg.Font = new Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+                this.txtMsg.ForeColor = Color.Red;
+                txtMsg.BackColor = Color.LightYellow;
+                txtMsg.Text = "レジストリへの書き込みは管理者権限が必要です。" + Environment.NewLine
+                            + "管理者権限で実行する場合は『管理者権限で再実行』をクリックして下さい。";
             }
         }
 
@@ -75,8 +83,8 @@ namespace KeybordRegsChanger
             // 制御方法を取得
             rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
             long valOverrideKeyboardType, valOverrideKeyboardSubtype;
-            if (Registy.GetRegistyValueDWORD(rKeyName, "OverrideKeyboardType", out valOverrideKeyboardType)
-                && Registy.GetRegistyValueDWORD(rKeyName, "OverrideKeyboardSubtype", out valOverrideKeyboardSubtype))
+            if (Registy.GetRegistyValueDWORD(rKeyName, "KeyboardTypeOverride", out valOverrideKeyboardType)
+                && Registy.GetRegistyValueDWORD(rKeyName, "KeyboardSubtypeOverride", out valOverrideKeyboardSubtype))
             {
                 if (valOverrideKeyboardType == 7)
                 {
@@ -150,20 +158,25 @@ namespace KeybordRegsChanger
 
             string rKeyName;
 
-            if (chkKorSetting.Checked)
+            // 韓国語の設定
+            rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
+            if (cmbKorSetting.Text == "無し")
             {
-                rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
-                if (cmbKorSetting.Text == "無し")
-                {
-                    Registy.DeleteRegistyValue(rKeyName, "LayerDriver KOR");
-                }
-                else
-                {
-                    Registy.SetRegistyValueSTRING(rKeyName, "LayerDriver KOR", "kbd101a.dll");
-                }
+                Registy.DeleteRegistyValue(rKeyName, "LayerDriver KOR");
+            }
+            else
+            {
+                Registy.SetRegistyValueSTRING(rKeyName, "LayerDriver KOR", "kbd101a.dll");
             }
 
-            if (chkAllSetting.Checked)
+            if (!chkAllSetting.Checked)
+            {
+                rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
+                // 統一設定しない
+                Registy.DeleteRegistyValue(rKeyName, "OverrideKeyboardType");
+                Registy.DeleteRegistyValue(rKeyName, "OverrideKeyboardSubtype");
+            }
+            else
             {
                 // 全て統一
                 rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
@@ -187,8 +200,8 @@ namespace KeybordRegsChanger
                 }
                 else
                 {
-                    Registy.DeleteRegistyValue(rKeyName, "OverrideKeyboardType");
-                    Registy.DeleteRegistyValue(rKeyName, "OverrideKeyboardSubtype");
+                    Registy.SetRegistyValueDWORD(rKeyName, "KeyboardTypeOverride", 7);
+                    Registy.SetRegistyValueDWORD(rKeyName, "KeyboardSubtypeOverride", 2);
                 }
             }
 
@@ -252,11 +265,9 @@ namespace KeybordRegsChanger
             var principal = new System.Security.Principal.WindowsPrincipal(identity);
             return principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
         }
-
+        
         /// <summary>再起動</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void label1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             var proc = new System.Diagnostics.ProcessStartInfo()
             {

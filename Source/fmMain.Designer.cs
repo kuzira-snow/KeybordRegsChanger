@@ -38,9 +38,11 @@
             this.InstanceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbAllSetting = new System.Windows.Forms.ComboBox();
             this.chkAllSetting = new System.Windows.Forms.CheckBox();
-            this.chkKorSetting = new System.Windows.Forms.CheckBox();
             this.cmbKorSetting = new System.Windows.Forms.ComboBox();
+            this.txtMsg = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKeybord)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUpdate.Location = new System.Drawing.Point(15, 27);
+            this.btnUpdate.Location = new System.Drawing.Point(11, 17);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(238, 29);
@@ -61,7 +63,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.LightGreen;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSave.Location = new System.Drawing.Point(260, 27);
+            this.btnSave.Location = new System.Drawing.Point(274, 17);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(238, 29);
@@ -92,14 +94,14 @@
             this.Type,
             this.KeybordName,
             this.InstanceID});
-            this.dgvKeybord.Location = new System.Drawing.Point(15, 173);
+            this.dgvKeybord.Location = new System.Drawing.Point(15, 204);
             this.dgvKeybord.Margin = new System.Windows.Forms.Padding(4);
             this.dgvKeybord.MultiSelect = false;
             this.dgvKeybord.Name = "dgvKeybord";
             this.dgvKeybord.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Snow;
             this.dgvKeybord.RowTemplate.Height = 30;
-            this.dgvKeybord.Size = new System.Drawing.Size(851, 307);
-            this.dgvKeybord.TabIndex = 2;
+            this.dgvKeybord.Size = new System.Drawing.Size(851, 276);
+            this.dgvKeybord.TabIndex = 9;
             // 
             // Enable
             // 
@@ -138,14 +140,13 @@
             // 
             this.cmbAllSetting.FormattingEnabled = true;
             this.cmbAllSetting.Items.AddRange(new object[] {
-            "(なし)",
             "JIS",
             "US"});
-            this.cmbAllSetting.Location = new System.Drawing.Point(274, 114);
+            this.cmbAllSetting.Location = new System.Drawing.Point(478, 122);
             this.cmbAllSetting.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAllSetting.Name = "cmbAllSetting";
             this.cmbAllSetting.Size = new System.Drawing.Size(150, 27);
-            this.cmbAllSetting.TabIndex = 2;
+            this.cmbAllSetting.TabIndex = 5;
             this.cmbAllSetting.Text = "US";
             // 
             // chkAllSetting
@@ -153,22 +154,12 @@
             this.chkAllSetting.AutoSize = true;
             this.chkAllSetting.Checked = true;
             this.chkAllSetting.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAllSetting.Location = new System.Drawing.Point(15, 116);
+            this.chkAllSetting.Location = new System.Drawing.Point(15, 159);
             this.chkAllSetting.Name = "chkAllSetting";
-            this.chkAllSetting.Size = new System.Drawing.Size(234, 23);
-            this.chkAllSetting.TabIndex = 4;
-            this.chkAllSetting.Text = "システム全体の設定を変更";
+            this.chkAllSetting.Size = new System.Drawing.Size(212, 23);
+            this.chkAllSetting.TabIndex = 6;
+            this.chkAllSetting.Text = "システム全体で設定する";
             this.chkAllSetting.UseVisualStyleBackColor = true;
-            // 
-            // chkKorSetting
-            // 
-            this.chkKorSetting.AutoSize = true;
-            this.chkKorSetting.Location = new System.Drawing.Point(500, 116);
-            this.chkKorSetting.Name = "chkKorSetting";
-            this.chkKorSetting.Size = new System.Drawing.Size(139, 23);
-            this.chkKorSetting.TabIndex = 5;
-            this.chkKorSetting.Text = "韓国語の有無";
-            this.chkKorSetting.UseVisualStyleBackColor = true;
             // 
             // cmbKorSetting
             // 
@@ -176,25 +167,57 @@
             this.cmbKorSetting.Items.AddRange(new object[] {
             "無し",
             "有り"});
-            this.cmbKorSetting.Location = new System.Drawing.Point(660, 114);
+            this.cmbKorSetting.Location = new System.Drawing.Point(512, 158);
             this.cmbKorSetting.Margin = new System.Windows.Forms.Padding(4);
             this.cmbKorSetting.Name = "cmbKorSetting";
             this.cmbKorSetting.Size = new System.Drawing.Size(150, 27);
-            this.cmbKorSetting.TabIndex = 6;
+            this.cmbKorSetting.TabIndex = 8;
             this.cmbKorSetting.Text = "無し";
+            // 
+            // txtMsg
+            // 
+            this.txtMsg.BackColor = System.Drawing.Color.LightYellow;
+            this.txtMsg.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.txtMsg.ForeColor = System.Drawing.Color.Red;
+            this.txtMsg.Location = new System.Drawing.Point(12, 53);
+            this.txtMsg.Multiline = true;
+            this.txtMsg.Name = "txtMsg";
+            this.txtMsg.ReadOnly = true;
+            this.txtMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtMsg.Size = new System.Drawing.Size(854, 54);
+            this.txtMsg.TabIndex = 3;
+            this.txtMsg.Text = "aaa\r\naaa\r\nbbb\r\nccc";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Yellow;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(628, 17);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(238, 29);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "管理者権限で再実行";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.LightYellow;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(12, 69);
+            this.label1.Location = new System.Drawing.Point(8, 125);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 19);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "メッセージ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Size = new System.Drawing.Size(449, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "全体設定時の一括 or 個別設定時の未設定のキーボード";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(373, 163);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 19);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "韓国語の有無";
             // 
             // fmMain
             // 
@@ -202,9 +225,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(879, 493);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtMsg);
             this.Controls.Add(this.cmbKorSetting);
-            this.Controls.Add(this.chkKorSetting);
             this.Controls.Add(this.chkAllSetting);
             this.Controls.Add(this.cmbAllSetting);
             this.Controls.Add(this.btnSave);
@@ -229,13 +254,15 @@
         private System.Windows.Forms.DataGridView dgvKeybord;
         private System.Windows.Forms.ComboBox cmbAllSetting;
         private System.Windows.Forms.CheckBox chkAllSetting;
-        private System.Windows.Forms.CheckBox chkKorSetting;
         private System.Windows.Forms.ComboBox cmbKorSetting;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Enable;
         private System.Windows.Forms.DataGridViewComboBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn KeybordName;
         private System.Windows.Forms.DataGridViewTextBoxColumn InstanceID;
+        private System.Windows.Forms.TextBox txtMsg;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
