@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KeybordRegsChanger.InfoGather
+namespace KeybordRegsChangerCommon
 {
     public class Registy
     {
@@ -105,6 +105,42 @@ namespace KeybordRegsChanger.InfoGather
                     rKey.Close();
             }
         }
+
+
+        public static string SetRegistyValueSTRINGLite(string keyName, string valueName, string value)
+        {
+            return SetRegistyValueLite(keyName, valueName, value, RegistryValueKind.String);
+        }
+
+        public static string SetRegistyValueDWORDLite(string keyName, string valueName, long value)
+        {
+            return SetRegistyValueLite(keyName, valueName, value, RegistryValueKind.DWord);
+        }
+
+        public static string SetRegistyValueLite(string keyName, string valueName, object value, RegistryValueKind valueKind)
+        {
+            string commands;
+
+            string key = @"HKEY_LOCAL_MACHINE\" + keyName;
+
+            string kind = "";
+            switch (valueKind)
+            {
+                case RegistryValueKind.String:
+                    kind = "REG_SZ";
+                    break;
+                case RegistryValueKind.DWord:
+                    kind = "REG_DWORD";
+                    break;
+                default:
+                    kind = "REG_SZ";
+                    break;
+            }
+
+            commands = $"reg add \"{key}\" /v \"{valueName}\" /t \"{kind}\" /d \"{Convert.ToString(value)}\" /f ";
+            
+            return commands;
+        }
         #endregion 登録系
 
         #region 削除系
@@ -138,6 +174,17 @@ namespace KeybordRegsChanger.InfoGather
                 if (rKey != null)
                     rKey.Close();
             }
+        }
+
+        public static string DeleteRegistyValueLite(string keyName, string valueName)
+        {
+            string commands;
+
+            string key = @"HKEY_LOCAL_MACHINE\" + keyName;
+
+            commands = $"reg delete \"{key}\" /v \"{valueName}\" /f ";
+
+            return commands;
         }
         #endregion 削除系
 

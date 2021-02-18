@@ -1,8 +1,9 @@
-﻿using KeybordRegsChanger.InfoGather;
+﻿using KeybordRegsChangerCommon;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -35,16 +36,16 @@ namespace KeybordRegsChanger
 
             if (IsAdministrator())
             {
-                button1.Visible = false;
+                btnAdmin.Visible = false;
                 txtMsg.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
                 this.txtMsg.ForeColor = System.Drawing.Color.Black;
                 txtMsg.BackColor = Color.White;
-                txtMsg.Text = "キーボードの日本語(106)/英語(101)を再起動しないで切替が可能なように" + Environment.NewLine
-                            + "各キーボードのレジストリへ設定をすることでスムーズな切替を可能。";
+                txtMsg.Text = "キーボードの日本語(106)/英語(101)を再起動しないで切替を行う為に" + Environment.NewLine
+                            + "各キーボードのレジストリへ設定をする。";
             }
             else
             {
-                button1.Visible = true;
+                btnAdmin.Visible = true;
                 txtMsg.Font = new Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
                 this.txtMsg.ForeColor = Color.Red;
                 txtMsg.BackColor = Color.LightYellow;
@@ -266,7 +267,7 @@ namespace KeybordRegsChanger
             return principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
         }
         
-        /// <summary>再起動</summary>
+        /// <summary>再起動.</summary>
         private void button1_Click(object sender, EventArgs e)
         {
             var proc = new System.Diagnostics.ProcessStartInfo()
@@ -277,10 +278,26 @@ namespace KeybordRegsChanger
             };
 
             //別プロセスで本アプリを起動する
-            System.Diagnostics.Process.Start(proc);
+            Process.Start(proc);
 
             //現在プロセス終了
             this.Close();
+        }
+
+        /// <summary>Windowsを再起動.</summary>
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = "shutdown.exe";
+
+            psi.Arguments = " / r";
+
+            Console.WriteLine(psi.Arguments);
+            //ウィンドウを表示しないようにする
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = true;
+            //起動
+            Process.Start(psi);
         }
     }
 }

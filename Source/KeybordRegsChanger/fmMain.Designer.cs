@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvKeybord = new System.Windows.Forms.DataGridView();
@@ -40,9 +40,10 @@
             this.chkAllSetting = new System.Windows.Forms.CheckBox();
             this.cmbKorSetting = new System.Windows.Forms.ComboBox();
             this.txtMsg = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdmin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnRestart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKeybord)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,27 +81,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvKeybord.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvKeybord.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvKeybord.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvKeybord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKeybord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Enable,
             this.Type,
             this.KeybordName,
             this.InstanceID});
-            this.dgvKeybord.Location = new System.Drawing.Point(15, 204);
+            this.dgvKeybord.Location = new System.Drawing.Point(15, 217);
             this.dgvKeybord.Margin = new System.Windows.Forms.Padding(4);
             this.dgvKeybord.MultiSelect = false;
             this.dgvKeybord.Name = "dgvKeybord";
             this.dgvKeybord.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Snow;
             this.dgvKeybord.RowTemplate.Height = 30;
-            this.dgvKeybord.Size = new System.Drawing.Size(851, 276);
+            this.dgvKeybord.Size = new System.Drawing.Size(851, 263);
             this.dgvKeybord.TabIndex = 9;
             // 
             // Enable
@@ -142,19 +143,19 @@
             this.cmbAllSetting.Items.AddRange(new object[] {
             "JIS",
             "US"});
-            this.cmbAllSetting.Location = new System.Drawing.Point(478, 122);
+            this.cmbAllSetting.Location = new System.Drawing.Point(478, 136);
             this.cmbAllSetting.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAllSetting.Name = "cmbAllSetting";
             this.cmbAllSetting.Size = new System.Drawing.Size(150, 27);
             this.cmbAllSetting.TabIndex = 5;
-            this.cmbAllSetting.Text = "US";
+            this.cmbAllSetting.Text = "JIS";
             // 
             // chkAllSetting
             // 
             this.chkAllSetting.AutoSize = true;
             this.chkAllSetting.Checked = true;
             this.chkAllSetting.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAllSetting.Location = new System.Drawing.Point(15, 159);
+            this.chkAllSetting.Location = new System.Drawing.Point(15, 173);
             this.chkAllSetting.Name = "chkAllSetting";
             this.chkAllSetting.Size = new System.Drawing.Size(212, 23);
             this.chkAllSetting.TabIndex = 6;
@@ -167,7 +168,7 @@
             this.cmbKorSetting.Items.AddRange(new object[] {
             "無し",
             "有り"});
-            this.cmbKorSetting.Location = new System.Drawing.Point(512, 158);
+            this.cmbKorSetting.Location = new System.Drawing.Point(512, 172);
             this.cmbKorSetting.Margin = new System.Windows.Forms.Padding(4);
             this.cmbKorSetting.Name = "cmbKorSetting";
             this.cmbKorSetting.Size = new System.Drawing.Size(150, 27);
@@ -184,27 +185,27 @@
             this.txtMsg.Name = "txtMsg";
             this.txtMsg.ReadOnly = true;
             this.txtMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtMsg.Size = new System.Drawing.Size(854, 54);
+            this.txtMsg.Size = new System.Drawing.Size(854, 69);
             this.txtMsg.TabIndex = 3;
             this.txtMsg.Text = "aaa\r\naaa\r\nbbb\r\nccc";
             // 
-            // button1
+            // btnAdmin
             // 
-            this.button1.BackColor = System.Drawing.Color.Yellow;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(628, 17);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(238, 29);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "管理者権限で再実行";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdmin.BackColor = System.Drawing.Color.Yellow;
+            this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdmin.Location = new System.Drawing.Point(628, 17);
+            this.btnAdmin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Size = new System.Drawing.Size(238, 29);
+            this.btnAdmin.TabIndex = 2;
+            this.btnAdmin.Text = "管理者権限で再実行";
+            this.btnAdmin.UseVisualStyleBackColor = false;
+            this.btnAdmin.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 125);
+            this.label1.Location = new System.Drawing.Point(8, 139);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(449, 19);
             this.label1.TabIndex = 4;
@@ -213,11 +214,24 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(373, 163);
+            this.label2.Location = new System.Drawing.Point(373, 177);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 19);
             this.label2.TabIndex = 10;
             this.label2.Text = "韓国語の有無";
+            // 
+            // btnRestart
+            // 
+            this.btnRestart.BackColor = System.Drawing.Color.LightGray;
+            this.btnRestart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRestart.Location = new System.Drawing.Point(692, 134);
+            this.btnRestart.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(174, 29);
+            this.btnRestart.TabIndex = 1;
+            this.btnRestart.Text = "Windowsを再起動";
+            this.btnRestart.UseVisualStyleBackColor = false;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
             // fmMain
             // 
@@ -227,11 +241,12 @@
             this.ClientSize = new System.Drawing.Size(879, 493);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.txtMsg);
             this.Controls.Add(this.cmbKorSetting);
             this.Controls.Add(this.chkAllSetting);
             this.Controls.Add(this.cmbAllSetting);
+            this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dgvKeybord);
@@ -260,9 +275,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn KeybordName;
         private System.Windows.Forms.DataGridViewTextBoxColumn InstanceID;
         private System.Windows.Forms.TextBox txtMsg;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnRestart;
     }
 }
 

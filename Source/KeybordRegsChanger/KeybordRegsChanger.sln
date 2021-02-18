@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeybordRegsChanger", "KeybordRegsChanger.csproj", "{CAB3A96E-0084-427B-9C69-9C54F0F688BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeybordRegsChangerCommon", "..\KeybordRegsChangerCommon\KeybordRegsChangerCommon.csproj", "{9B815CDF-EBE7-4138-9501-D33BD4C13B5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CAB3A96E-0084-427B-9C69-9C54F0F688BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAB3A96E-0084-427B-9C69-9C54F0F688BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAB3A96E-0084-427B-9C69-9C54F0F688BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B815CDF-EBE7-4138-9501-D33BD4C13B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B815CDF-EBE7-4138-9501-D33BD4C13B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B815CDF-EBE7-4138-9501-D33BD4C13B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B815CDF-EBE7-4138-9501-D33BD4C13B5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KeybordRegsChanger.InfoGather
+namespace KeybordRegsChangerCommon
 {
     /// <summary>
     /// Vista以降で可能
