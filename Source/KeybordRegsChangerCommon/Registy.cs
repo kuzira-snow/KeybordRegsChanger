@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace KeybordRegsChangerCommon
 {
+    /// <summary>レジストリ操作クラス.</summary>
     public class Registy
     {
         #region 取得系

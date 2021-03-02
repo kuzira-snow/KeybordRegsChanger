@@ -46,14 +46,13 @@ namespace KeybordRegsChanger
         private void UpdateKeybordInfo()
         {
             KeybordList.Clear();
-
-            var pnputilList = Pnputil.GetKeybordPnputil();
             string rKeyName;
 
-            foreach (var pnputil in pnputilList)
+            var deviceList = Device.GetKeybordDevices();
+            foreach (var deviceInfo in deviceList)
             {
                 DgvKeybordModel addItem = new DgvKeybordModel();
-                addItem.InstanceID = pnputil.InstanceID;
+                addItem.InstanceID = deviceInfo.DeviceID;
                 KeybordList.Add(addItem);
             }
 

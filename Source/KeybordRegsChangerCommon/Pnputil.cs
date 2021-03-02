@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace KeybordRegsChangerCommon
 {
-    /// <summary>
-    /// Vista以降で可能
-    /// </summary>
+    /// <summary>Vista以降で可能.</summary>
     public class Pnputil
     {
+        /// <summary>pnputil.exeを使ってキーボードの一覧を取得.</summary>
+        /// <returns></returns>
         public static List<PnputilInfo> GetKeybordPnputil()
         {
             List<PnputilInfo> ret = new List<PnputilInfo>();
@@ -70,6 +70,8 @@ namespace KeybordRegsChangerCommon
             return ret;
         }
 
+        /// <summary>pnputilを実行する.</summary>
+        /// <returns></returns>
         private static string RunPnputil()
         {
             if (!File.Exists("pnputil.exe"))
@@ -93,6 +95,7 @@ namespace KeybordRegsChangerCommon
             return output;
         }
 
+        /// <summary>PnpUtilで取れる情報クラス.</summary>
         public class PnputilInfo
         {
             // インスタンス ID:        HID\RCA_VKD&Col01\1&2dZ00ZZ0&0&0000

@@ -12,9 +12,6 @@
 
 # 準備  
 + KeybordRegsChanger.zip をダウンロード／解凍  
-+ 以下のファイルを解凍したフォルダの中にコピーする  
- ※各デバイスのインスタンスIDを取得する為に必要  
-　C:\WINDOWS\System32\pnputil.exe  
   
 # 読み書きされるレジストリ  
 1. HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\i8042prt\Parameters  
