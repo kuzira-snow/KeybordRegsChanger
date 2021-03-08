@@ -38,7 +38,7 @@ namespace KeybordRegsChanger
             this.txtMsg.ForeColor = System.Drawing.Color.Black;
             txtMsg.BackColor = Color.White;
             txtMsg.Text = "キーボードの日本語(106)/英語(101)を再起動しないで切替を行う為に" + Environment.NewLine
-                        + "各キーボードのレジストリへ設定をする。" + Environment.NewLine
+                        + "各キーボードのレジストリへ設定を行うバッチファイルを出力します。" + Environment.NewLine
                         + "Lite版は現在の設定が取れないので初期表示の値は現在の設定と異なります。";
         }
 
@@ -46,7 +46,6 @@ namespace KeybordRegsChanger
         private void UpdateKeybordInfo()
         {
             KeybordList.Clear();
-            string rKeyName;
 
             var deviceList = Device.GetKeybordDevices();
             foreach (var deviceInfo in deviceList)
@@ -90,6 +89,10 @@ namespace KeybordRegsChanger
             }
                        
             string rKeyName;
+
+            commands.AppendLine("");
+            commands.AppendLine(":: レジストリへの書き込みを行います。");
+            commands.AppendLine("pause");
 
             // 韓国語の設定
             commands.AppendLine(":: 韓国語の設定");
@@ -186,11 +189,13 @@ namespace KeybordRegsChanger
             }
 
             commands.AppendLine("");
-            commands.AppendLine("レジストリの設定が完了しました。再起動を行って下さい。");
+            commands.AppendLine(":: レジストリの設定が完了しました。再起動を行って下さい。");
             commands.AppendLine("pause");
 
             // ファイル出力
             System.IO.File.WriteAllText(fileName, commands.ToString());
+
+            MessageBox.Show(string.Format($"設定の変更を行うバッチファイルの出力が完了しました。{Environment.NewLine}バッチファイルを管理者実行して下さい。"), btnSave.Text, MessageBoxButtons.OK);
         }
 
         /// <summary>キーボード情報データクラス.</summary>

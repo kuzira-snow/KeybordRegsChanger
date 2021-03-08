@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnReLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvKeybord = new System.Windows.Forms.DataGridView();
             this.Enable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -49,16 +49,16 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUpdate.Location = new System.Drawing.Point(11, 17);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(238, 29);
-            this.btnUpdate.TabIndex = 0;
-            this.btnUpdate.Text = "再読み込み";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnReLoad.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnReLoad.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReLoad.Location = new System.Drawing.Point(11, 17);
+            this.btnReLoad.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReLoad.Name = "btnUpdate";
+            this.btnReLoad.Size = new System.Drawing.Size(238, 29);
+            this.btnReLoad.TabIndex = 0;
+            this.btnReLoad.Text = "再読み込み";
+            this.btnReLoad.UseVisualStyleBackColor = false;
+            this.btnReLoad.Click += new System.EventHandler(this.btnReLoad_Click);
             // 
             // btnSave
             // 
@@ -200,7 +200,7 @@
             this.btnAdmin.TabIndex = 2;
             this.btnAdmin.Text = "管理者権限で再実行";
             this.btnAdmin.UseVisualStyleBackColor = false;
-            this.btnAdmin.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // label1
             // 
@@ -248,7 +248,7 @@
             this.Controls.Add(this.cmbAllSetting);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnReLoad);
             this.Controls.Add(this.dgvKeybord);
             this.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -264,7 +264,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnReLoad;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridView dgvKeybord;
         private System.Windows.Forms.ComboBox cmbAllSetting;

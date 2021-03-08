@@ -41,7 +41,8 @@ namespace KeybordRegsChanger
                 this.txtMsg.ForeColor = System.Drawing.Color.Black;
                 txtMsg.BackColor = Color.White;
                 txtMsg.Text = "キーボードの日本語(106)/英語(101)を再起動しないで切替を行う為に" + Environment.NewLine
-                            + "各キーボードのレジストリへ設定をする。";
+                            + "各キーボードのレジストリへ設定をする。" + Environment.NewLine
+                            + "設定の反映後にWindowsの再起動を行って下さい。（再起動しないと反映されません）";
             }
             else
             {
@@ -51,6 +52,9 @@ namespace KeybordRegsChanger
                 txtMsg.BackColor = Color.LightYellow;
                 txtMsg.Text = "レジストリへの書き込みは管理者権限が必要です。" + Environment.NewLine
                             + "管理者権限で実行する場合は『管理者権限で再実行』をクリックして下さい。";
+
+                btnReLoad.Enabled = false;
+                btnSave.Enabled = false;
             }
         }
 
@@ -136,9 +140,9 @@ namespace KeybordRegsChanger
         /// <summary>再読み込み.</summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnReLoad_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("入力内容は保存されません", btnUpdate.Text, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+            if (MessageBox.Show("入力内容は保存されません", btnReLoad.Text, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
             {
                 return;
             }
@@ -151,7 +155,7 @@ namespace KeybordRegsChanger
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("書き込みしますか？", btnSave.Text, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+            if (MessageBox.Show("書き込みしますか？", btnSave.Text, MessageBoxButtons.OKCancel) != DialogResult.OK)
             {
                 return;
             }
@@ -246,6 +250,8 @@ namespace KeybordRegsChanger
                     Registy.SetRegistyValueSTRING(rKeyName, "KeybordName", keybord.KeybordName);
                 }
             }
+
+            MessageBox.Show(string.Format($"設定の反映が完了しました。{Environment.NewLine}Windowsの再起動を行って下さい。"), btnSave.Text, MessageBoxButtons.OK);
         }
 
         /// <summary>キーボード情報データクラス.</summary>
@@ -266,8 +272,8 @@ namespace KeybordRegsChanger
             return principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
         }
         
-        /// <summary>再起動.</summary>
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>管理者権限で実行.</summary>
+        private void btnAdmin_Click(object sender, EventArgs e)
         {
             var proc = new System.Diagnostics.ProcessStartInfo()
             {
@@ -286,6 +292,11 @@ namespace KeybordRegsChanger
         /// <summary>Windowsを再起動.</summary>
         private void btnRestart_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Windowsの再起動を行います", btnSave.Text, MessageBoxButtons.OKCancel) != DialogResult.OK)
+            {
+                return;
+            }
+
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.FileName = "shutdown.exe";
 
