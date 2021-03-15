@@ -87,14 +87,14 @@ namespace KeybordRegsChanger
             // 制御方法を取得
             rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
             long valOverrideKeyboardType, valOverrideKeyboardSubtype;
-            if (Registy.GetRegistyValueDWORD(rKeyName, "KeyboardTypeOverride", out valOverrideKeyboardType)
-                && Registy.GetRegistyValueDWORD(rKeyName, "KeyboardSubtypeOverride", out valOverrideKeyboardSubtype))
+            string valOverrideKeyboardIdentifier;
+            if (Registy.GetRegistyValueSTRING(rKeyName, "OverrideKeyboardIdentifier", out valOverrideKeyboardIdentifier))
             {
-                if (valOverrideKeyboardType == 7)
+                if (valOverrideKeyboardIdentifier == "PCAT_106KEY")
                 {
                     cmbAllSetting.Text = "JIS";
                 }
-                else if(valOverrideKeyboardType == 4)
+                else if(valOverrideKeyboardIdentifier == "PCAT_101KEY")
                 {
                     cmbAllSetting.Text = "US";
                 }
@@ -104,13 +104,13 @@ namespace KeybordRegsChanger
                 cmbAllSetting.Text = "(なし)";
             }
 
-            if (Registy.GetRegistyValueDWORD(rKeyName, "OverrideKeyboardType", out valOverrideKeyboardType))
+            if (Registy.GetRegistyValueDWORD(rKeyName, "KeyboardTypeOverride", out valOverrideKeyboardType))
             {
-                chkAllSetting.Checked = true;
+                chkAllSetting.Checked = false;
             }
             else
             {
-                chkAllSetting.Checked = false;
+                chkAllSetting.Checked = true;
             }
 
 
@@ -203,11 +203,6 @@ namespace KeybordRegsChanger
                 Registy.SetRegistyValueDWORD(rKeyName, "KeyboardTypeOverride", 4);
                 Registy.SetRegistyValueDWORD(rKeyName, "KeyboardSubtypeOverride", 0);
             }
-            else
-            {
-                Registy.DeleteRegistyValue(rKeyName, "KeyboardTypeOverride");
-                Registy.DeleteRegistyValue(rKeyName, "KeyboardSubtypeOverride");
-            }
 
             if (!chkAllSetting.Checked)
             {
@@ -215,6 +210,8 @@ namespace KeybordRegsChanger
                 // 統一設定しない
                 Registy.DeleteRegistyValue(rKeyName, "OverrideKeyboardType");
                 Registy.DeleteRegistyValue(rKeyName, "OverrideKeyboardSubtype");
+                Registy.DeleteRegistyValue(rKeyName, "KeyboardTypeOverride");
+                Registy.DeleteRegistyValue(rKeyName, "KeyboardSubtypeOverride");
             }
 
             // 各キーボードへの設定

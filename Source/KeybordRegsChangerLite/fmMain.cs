@@ -128,11 +128,6 @@ namespace KeybordRegsChanger
                 commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardTypeOverride", 4));
                 commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardSubtypeOverride", 0));
             }
-            else
-            {
-                commands.AppendLine(Registy.DeleteRegistyValueLite(rKeyName, "KeyboardTypeOverride"));
-                commands.AppendLine(Registy.DeleteRegistyValueLite(rKeyName, "KeyboardSubtypeOverride"));
-            }
 
             if (!chkAllSetting.Checked)
             {
@@ -140,6 +135,8 @@ namespace KeybordRegsChanger
                 // 統一設定しない
                 commands.AppendLine(Registy.DeleteRegistyValueLite(rKeyName, "OverrideKeyboardType"));
                 commands.AppendLine(Registy.DeleteRegistyValueLite(rKeyName, "OverrideKeyboardSubtype"));
+                commands.AppendLine(Registy.DeleteRegistyValueLite(rKeyName, "KeyboardTypeOverride"));
+                commands.AppendLine(Registy.DeleteRegistyValueLite(rKeyName, "KeyboardSubtypeOverride"));
             }
 
             commands.AppendLine("");
