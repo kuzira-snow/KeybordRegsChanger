@@ -94,7 +94,7 @@ namespace KeybordRegsChanger
                 {
                     cmbAllSetting.Text = "JIS";
                 }
-                else
+                else if(valOverrideKeyboardType == 4)
                 {
                     cmbAllSetting.Text = "US";
                 }
@@ -103,6 +103,16 @@ namespace KeybordRegsChanger
             {
                 cmbAllSetting.Text = "(なし)";
             }
+
+            if (Registy.GetRegistyValueDWORD(rKeyName, "OverrideKeyboardType", out valOverrideKeyboardType))
+            {
+                chkAllSetting.Checked = true;
+            }
+            else
+            {
+                chkAllSetting.Checked = false;
+            }
+
 
             // キーボード毎の設定を取得
             foreach (var keybord in KeybordList)
@@ -173,40 +183,38 @@ namespace KeybordRegsChanger
                 Registy.SetRegistyValueSTRING(rKeyName, "LayerDriver KOR", "kbd101a.dll");
             }
 
+            // デフォルト設定
+            rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
+            if (cmbAllSetting.Text == "JIS")
+            {
+                Registy.SetRegistyValueSTRING(rKeyName, "LayerDriver JPN", "kbd106.dll");
+                Registy.SetRegistyValueSTRING(rKeyName, "OverrideKeyboardIdentifier", "PCAT_106KEY");
+                Registy.SetRegistyValueDWORD(rKeyName, "OverrideKeyboardType", 7);
+                Registy.SetRegistyValueDWORD(rKeyName, "OverrideKeyboardSubtype", 2);
+                Registy.SetRegistyValueDWORD(rKeyName, "KeyboardTypeOverride", 7);
+                Registy.SetRegistyValueDWORD(rKeyName, "KeyboardSubtypeOverride", 2);
+            }
+            else if (cmbAllSetting.Text == "US")
+            {
+                Registy.SetRegistyValueSTRING(rKeyName, "LayerDriver JPN", "kbd101.dll");
+                Registy.SetRegistyValueSTRING(rKeyName, "OverrideKeyboardIdentifier", "PCAT_101KEY");
+                Registy.SetRegistyValueDWORD(rKeyName, "OverrideKeyboardType", 4);
+                Registy.SetRegistyValueDWORD(rKeyName, "OverrideKeyboardSubtype", 0);
+                Registy.SetRegistyValueDWORD(rKeyName, "KeyboardTypeOverride", 4);
+                Registy.SetRegistyValueDWORD(rKeyName, "KeyboardSubtypeOverride", 0);
+            }
+            else
+            {
+                Registy.DeleteRegistyValue(rKeyName, "KeyboardTypeOverride");
+                Registy.DeleteRegistyValue(rKeyName, "KeyboardSubtypeOverride");
+            }
+
             if (!chkAllSetting.Checked)
             {
                 rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
                 // 統一設定しない
                 Registy.DeleteRegistyValue(rKeyName, "OverrideKeyboardType");
                 Registy.DeleteRegistyValue(rKeyName, "OverrideKeyboardSubtype");
-            }
-            else
-            {
-                // 全て統一
-                rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
-                if (cmbAllSetting.Text == "JIS")
-                {
-                    Registy.SetRegistyValueSTRING(rKeyName, "LayerDriver JPN", "kbd106.dll");
-                    Registy.SetRegistyValueSTRING(rKeyName, "OverrideKeyboardIdentifier", "PCAT_106KEY");
-                    Registy.SetRegistyValueDWORD(rKeyName, "OverrideKeyboardType", 7);
-                    Registy.SetRegistyValueDWORD(rKeyName, "OverrideKeyboardSubtype", 2);
-                    Registy.SetRegistyValueDWORD(rKeyName, "KeyboardTypeOverride", 7);
-                    Registy.SetRegistyValueDWORD(rKeyName, "KeyboardSubtypeOverride", 2);
-                }
-                else if (cmbAllSetting.Text == "US")
-                {
-                    Registy.SetRegistyValueSTRING(rKeyName, "LayerDriver JPN", "kbd101.dll");
-                    Registy.SetRegistyValueSTRING(rKeyName, "OverrideKeyboardIdentifier", "PCAT_101KEY");
-                    Registy.SetRegistyValueDWORD(rKeyName, "OverrideKeyboardType", 4);
-                    Registy.SetRegistyValueDWORD(rKeyName, "OverrideKeyboardSubtype", 0);
-                    Registy.SetRegistyValueDWORD(rKeyName, "KeyboardTypeOverride", 4);
-                    Registy.SetRegistyValueDWORD(rKeyName, "KeyboardSubtypeOverride", 0);
-                }
-                else
-                {
-                    Registy.SetRegistyValueDWORD(rKeyName, "KeyboardTypeOverride", 7);
-                    Registy.SetRegistyValueDWORD(rKeyName, "KeyboardSubtypeOverride", 2);
-                }
             }
 
             // 各キーボードへの設定
@@ -300,7 +308,7 @@ namespace KeybordRegsChanger
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.FileName = "shutdown.exe";
 
-            psi.Arguments = " / r";
+            psi.Arguments = " /r /t 10";
 
             Console.WriteLine(psi.Arguments);
             //ウィンドウを表示しないようにする

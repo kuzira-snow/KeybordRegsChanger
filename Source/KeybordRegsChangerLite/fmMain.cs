@@ -108,40 +108,38 @@ namespace KeybordRegsChanger
 
             commands.AppendLine("");
             commands.AppendLine(":: 全体統一の設定");
+            // 全て統一
+            rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
+            if (cmbAllSetting.Text == "JIS")
+            {
+                commands.AppendLine(Registy.SetRegistyValueSTRINGLite(rKeyName, "LayerDriver JPN", "kbd106.dll"));
+                commands.AppendLine(Registy.SetRegistyValueSTRINGLite(rKeyName, "OverrideKeyboardIdentifier", "PCAT_106KEY"));
+                commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "OverrideKeyboardType", 7));
+                commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "OverrideKeyboardSubtype", 2));
+                commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardTypeOverride", 7));
+                commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardSubtypeOverride", 2));
+            }
+            else if (cmbAllSetting.Text == "US")
+            {
+                commands.AppendLine(Registy.SetRegistyValueSTRINGLite(rKeyName, "LayerDriver JPN", "kbd101.dll"));
+                commands.AppendLine(Registy.SetRegistyValueSTRINGLite(rKeyName, "OverrideKeyboardIdentifier", "PCAT_101KEY"));
+                commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "OverrideKeyboardType", 4));
+                commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "OverrideKeyboardSubtype", 0));
+                commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardTypeOverride", 4));
+                commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardSubtypeOverride", 0));
+            }
+            else
+            {
+                commands.AppendLine(Registy.DeleteRegistyValueLite(rKeyName, "KeyboardTypeOverride"));
+                commands.AppendLine(Registy.DeleteRegistyValueLite(rKeyName, "KeyboardSubtypeOverride"));
+            }
+
             if (!chkAllSetting.Checked)
             {
                 rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
                 // 統一設定しない
                 commands.AppendLine(Registy.DeleteRegistyValueLite(rKeyName, "OverrideKeyboardType"));
                 commands.AppendLine(Registy.DeleteRegistyValueLite(rKeyName, "OverrideKeyboardSubtype"));
-            }
-            else
-            {
-                // 全て統一
-                rKeyName = @"SYSTEM\CurrentControlSet\Services\i8042prt\Parameters";
-                if (cmbAllSetting.Text == "JIS")
-                {
-                    commands.AppendLine(Registy.SetRegistyValueSTRINGLite(rKeyName, "LayerDriver JPN", "kbd106.dll"));
-                    commands.AppendLine(Registy.SetRegistyValueSTRINGLite(rKeyName, "OverrideKeyboardIdentifier", "PCAT_106KEY"));
-                    commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "OverrideKeyboardType", 7));
-                    commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "OverrideKeyboardSubtype", 2));
-                    commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardTypeOverride", 7));
-                    commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardSubtypeOverride", 2));
-                }
-                else if (cmbAllSetting.Text == "US")
-                {
-                    commands.AppendLine(Registy.SetRegistyValueSTRINGLite(rKeyName, "LayerDriver JPN", "kbd101.dll"));
-                    commands.AppendLine(Registy.SetRegistyValueSTRINGLite(rKeyName, "OverrideKeyboardIdentifier", "PCAT_101KEY"));
-                    commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "OverrideKeyboardType", 4));
-                    commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "OverrideKeyboardSubtype", 0));
-                    commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardTypeOverride", 4));
-                    commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardSubtypeOverride", 0));
-                }
-                else
-                {
-                    commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardTypeOverride", 7));
-                    commands.AppendLine(Registy.SetRegistyValueDWORDLite(rKeyName, "KeyboardSubtypeOverride", 2));
-                }
             }
 
             commands.AppendLine("");
