@@ -16,7 +16,7 @@ namespace KeybordRegsChanger
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fmMain());
+            Application.Run(new fmMainLite());
         }
     }
 }

@@ -50,16 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="fmMain.cs">
+    <Compile Include="fmMainLite.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fmMain.Designer.cs">
-      <DependentUpon>fmMain.cs</DependentUpon>
+    <Compile Include="fmMainLite.Designer.cs">
+      <DependentUpon>fmMainLite.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="fmMain.resx">
-      <DependentUpon>fmMain.cs</DependentUpon>
+    <EmbeddedResource Include="fmMainLite.resx">
+      <DependentUpon>fmMainLite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

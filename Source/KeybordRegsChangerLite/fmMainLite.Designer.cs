@@ -1,6 +1,6 @@
 ﻿namespace KeybordRegsChanger
 {
-    partial class fmMain
+    partial class fmMainLite
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -31,16 +31,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvKeybord = new System.Windows.Forms.DataGridView();
-            this.Enable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.KeybordName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InstanceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbAllSetting = new System.Windows.Forms.ComboBox();
             this.chkAllSetting = new System.Windows.Forms.CheckBox();
             this.cmbKorSetting = new System.Windows.Forms.ComboBox();
             this.txtMsg = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.Enable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.KeybordName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InstanceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKeybord)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,39 +87,6 @@
             this.dgvKeybord.RowTemplate.Height = 30;
             this.dgvKeybord.Size = new System.Drawing.Size(851, 266);
             this.dgvKeybord.TabIndex = 9;
-            // 
-            // Enable
-            // 
-            this.Enable.DataPropertyName = "Enable";
-            this.Enable.FalseValue = "false";
-            this.Enable.HeaderText = "Enable";
-            this.Enable.IndeterminateValue = "true";
-            this.Enable.Name = "Enable";
-            this.Enable.TrueValue = "true";
-            // 
-            // Type
-            // 
-            this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "Type";
-            this.Type.Items.AddRange(new object[] {
-            "(なし)",
-            "JIS",
-            "US"});
-            this.Type.Name = "Type";
-            // 
-            // KeybordName
-            // 
-            this.KeybordName.DataPropertyName = "KeybordName";
-            this.KeybordName.HeaderText = "KeybordName";
-            this.KeybordName.Name = "KeybordName";
-            // 
-            // InstanceID
-            // 
-            this.InstanceID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.InstanceID.DataPropertyName = "InstanceID";
-            this.InstanceID.HeaderText = "InctanceID";
-            this.InstanceID.Name = "InstanceID";
-            this.InstanceID.Width = 122;
             // 
             // cmbAllSetting
             // 
@@ -191,6 +158,45 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "韓国語の有無";
             // 
+            // Enable
+            // 
+            this.Enable.DataPropertyName = "Enable";
+            this.Enable.FalseValue = "false";
+            this.Enable.HeaderText = "Enable";
+            this.Enable.IndeterminateValue = "true";
+            this.Enable.MinimumWidth = 100;
+            this.Enable.Name = "Enable";
+            this.Enable.TrueValue = "true";
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "Type";
+            this.Type.HeaderText = "Type";
+            this.Type.Items.AddRange(new object[] {
+            "(なし)",
+            "JIS",
+            "US"});
+            this.Type.MinimumWidth = 100;
+            this.Type.Name = "Type";
+            // 
+            // KeybordName
+            // 
+            this.KeybordName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.KeybordName.DataPropertyName = "KeybordName";
+            this.KeybordName.HeaderText = "KeybordName";
+            this.KeybordName.MinimumWidth = 100;
+            this.KeybordName.Name = "KeybordName";
+            this.KeybordName.Width = 144;
+            // 
+            // InstanceID
+            // 
+            this.InstanceID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.InstanceID.DataPropertyName = "InstanceID";
+            this.InstanceID.HeaderText = "InctanceID";
+            this.InstanceID.MinimumWidth = 100;
+            this.InstanceID.Name = "InstanceID";
+            this.InstanceID.Width = 122;
+            // 
             // fmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -223,13 +229,13 @@
         private System.Windows.Forms.ComboBox cmbAllSetting;
         private System.Windows.Forms.CheckBox chkAllSetting;
         private System.Windows.Forms.ComboBox cmbKorSetting;
+        private System.Windows.Forms.TextBox txtMsg;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Enable;
         private System.Windows.Forms.DataGridViewComboBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn KeybordName;
         private System.Windows.Forms.DataGridViewTextBoxColumn InstanceID;
-        private System.Windows.Forms.TextBox txtMsg;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace KeybordRegsChanger
 {
-    public partial class fmMain : Form
+    public partial class fmMainLite : Form
     {
         // キーボード Type Subtype
         // US 101/104 4 0
@@ -21,7 +21,7 @@ namespace KeybordRegsChanger
         private List<DgvKeybordModel> KeybordList = new List<DgvKeybordModel>();
 
         /// <summary>コンストラクタ.</summary>
-        public fmMain()
+        public fmMainLite()
         {
             InitializeComponent();
         }
@@ -184,7 +184,7 @@ namespace KeybordRegsChanger
             }
 
             commands.AppendLine("");
-            commands.AppendLine(":: レジストリの設定が完了しました。再起動を行って下さい。");
+            commands.AppendLine(":: レジストリの設定が完了しました。PCの再起動を行って下さい。");
             commands.AppendLine("pause");
 
             // ファイル出力

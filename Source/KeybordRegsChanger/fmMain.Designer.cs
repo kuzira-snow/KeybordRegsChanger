@@ -32,10 +32,6 @@
             this.btnReLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvKeybord = new System.Windows.Forms.DataGridView();
-            this.Enable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.KeybordName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InstanceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbAllSetting = new System.Windows.Forms.ComboBox();
             this.chkAllSetting = new System.Windows.Forms.CheckBox();
             this.cmbKorSetting = new System.Windows.Forms.ComboBox();
@@ -44,16 +40,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnRestart = new System.Windows.Forms.Button();
+            this.Enable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.KeybordName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InstanceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKeybord)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnUpdate
+            // btnReLoad
             // 
             this.btnReLoad.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnReLoad.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnReLoad.Location = new System.Drawing.Point(11, 17);
             this.btnReLoad.Margin = new System.Windows.Forms.Padding(4);
-            this.btnReLoad.Name = "btnUpdate";
+            this.btnReLoad.Name = "btnReLoad";
             this.btnReLoad.Size = new System.Drawing.Size(238, 29);
             this.btnReLoad.TabIndex = 0;
             this.btnReLoad.Text = "再読み込み";
@@ -103,39 +103,6 @@
             this.dgvKeybord.RowTemplate.Height = 30;
             this.dgvKeybord.Size = new System.Drawing.Size(851, 263);
             this.dgvKeybord.TabIndex = 9;
-            // 
-            // Enable
-            // 
-            this.Enable.DataPropertyName = "Enable";
-            this.Enable.FalseValue = "false";
-            this.Enable.HeaderText = "Enable";
-            this.Enable.IndeterminateValue = "true";
-            this.Enable.Name = "Enable";
-            this.Enable.TrueValue = "true";
-            // 
-            // Type
-            // 
-            this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "Type";
-            this.Type.Items.AddRange(new object[] {
-            "(なし)",
-            "JIS",
-            "US"});
-            this.Type.Name = "Type";
-            // 
-            // KeybordName
-            // 
-            this.KeybordName.DataPropertyName = "KeybordName";
-            this.KeybordName.HeaderText = "KeybordName";
-            this.KeybordName.Name = "KeybordName";
-            // 
-            // InstanceID
-            // 
-            this.InstanceID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.InstanceID.DataPropertyName = "InstanceID";
-            this.InstanceID.HeaderText = "InctanceID";
-            this.InstanceID.Name = "InstanceID";
-            this.InstanceID.Width = 122;
             // 
             // cmbAllSetting
             // 
@@ -233,6 +200,43 @@
             this.btnRestart.UseVisualStyleBackColor = false;
             this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
+            // Enable
+            // 
+            this.Enable.DataPropertyName = "Enable";
+            this.Enable.FalseValue = "false";
+            this.Enable.HeaderText = "Enable";
+            this.Enable.IndeterminateValue = "true";
+            this.Enable.MinimumWidth = 100;
+            this.Enable.Name = "Enable";
+            this.Enable.TrueValue = "true";
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "Type";
+            this.Type.HeaderText = "Type";
+            this.Type.Items.AddRange(new object[] {
+            "(なし)",
+            "JIS",
+            "US"});
+            this.Type.MinimumWidth = 100;
+            this.Type.Name = "Type";
+            // 
+            // KeybordName
+            // 
+            this.KeybordName.DataPropertyName = "KeybordName";
+            this.KeybordName.HeaderText = "KeybordName";
+            this.KeybordName.MinimumWidth = 100;
+            this.KeybordName.Name = "KeybordName";
+            // 
+            // InstanceID
+            // 
+            this.InstanceID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.InstanceID.DataPropertyName = "InstanceID";
+            this.InstanceID.HeaderText = "InctanceID";
+            this.InstanceID.MinimumWidth = 100;
+            this.InstanceID.Name = "InstanceID";
+            this.InstanceID.Width = 122;
+            // 
             // fmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -270,15 +274,15 @@
         private System.Windows.Forms.ComboBox cmbAllSetting;
         private System.Windows.Forms.CheckBox chkAllSetting;
         private System.Windows.Forms.ComboBox cmbKorSetting;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Enable;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KeybordName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InstanceID;
         private System.Windows.Forms.TextBox txtMsg;
         private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRestart;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Enable;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KeybordName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InstanceID;
     }
 }
 
